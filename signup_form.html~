@@ -50,7 +50,7 @@
         </audio>
 
         <div id="form">
-    		<form action="signup.php" method="post">
+    		<form action="file.php" method="post">
                 <input type="text" id="FirstName" name="FirstName" autocomplete="off" maxlength="15" placeholder="First Name" required><br/>
                 <input type="text" id="LastName" name="LastName" autocomplete="off" maxlength="25" placeholder="Last Name" required><br/>
                 
