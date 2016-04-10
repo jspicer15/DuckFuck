@@ -37,9 +37,9 @@
 	//////////////////////////////////////UPDATE SQL DATABASE//////////////////////////////////////////////
   $activation_hash = md5( rand(0,1000) );
 
-	$sql = "INSERT INTO users (first, last, email, password, hash, active) VALUES ('$FirstName', '$LastName', '$email', '$password', $activation_hash, 0)";
+	$sql = "INSERT INTO users (first, last, email, password, hash, active) VALUES ('$FirstName', '$LastName', '$email', '$hash', '$activation_hash', 0)";
 
-	if ($conn->qury($sql) === TRUE)
+	if ($conn->query($sql) === TRUE)
 	{
 
     $to = $email; // Send email to our user
