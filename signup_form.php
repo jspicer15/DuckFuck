@@ -56,8 +56,8 @@
                 
                 <input type="text" id="email" name="email" autocomplete="off" maxlength="30" placeholder="email" pattern="[A-Za-z0-9._%+-]+@stevens+\.edu$" required><br/>
 
-                <input type="password" id="password" minlength="8" placeholder="Password" required><br/>
-                <input type="password" id="ConfirmPassword" minlength="8" placeholder="Confirm Password" required><br/>
+                <input type="password" name = "password" id="password" minlength="8" placeholder="Password" required><br/>
+                <input type="password" name = "ConfirmPassword" id="ConfirmPassword" minlength="8" placeholder="Confirm Password" required><br/>
                
                 <input type="submit" id="submit" value="Submit">
         	</form>
