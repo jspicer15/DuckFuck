@@ -61,7 +61,7 @@ else
 {
     ?>
 
-	<a href = "signup_form.html" > <h3> Don't have an account? Sign up here </h3> </a>
+	<a href = "signup_form.php" > <h3> Don't have an account? Sign up here </h3> </a>
     </body>
    <h1>Member Login</h1>
 
