@@ -15,7 +15,7 @@
 
         <h1>Create your DuckFuck Account </h1>
     	<div id="about">
-            <img id="ducklogo" onmouseover="playAudio()" onmouseout="stopAudio()" src="ducklogo.png" alt="ducklogo" />
+            <img id="ducklogo" src="logo/DF-logo.png" alt="DuckFuck" />
             <p>A dating website <i>for</i> Stevens students, <i>by</i> Stevens students. Creating an account is <strong>free</strong>, no strings attached.</p>
         </div>
 
@@ -34,20 +34,6 @@
             password.onchange = validatePassword;
             confirm_password.onkeyup = validatePassword;
         </script>
-
-        <script>
-            function playAudio() {
-                 document.getElementById("audio").play();
-            }
-
-            function stopAudio() {
-                 document.getElementById("audio").pause();
-            }
-        </script>
-
-        <audio id="audio">
-            <source src="audio.mp3" type="audio/mp3">
-        </audio>
 
         <div id="form">
     		<form action="signup.php" method="post">
