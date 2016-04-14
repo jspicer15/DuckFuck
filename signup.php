@@ -26,14 +26,7 @@
   $cost = 10; //lower this if consumes too much cpu
 
   // Create salt
-  $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
-
-  // Prefix to verify later.
-  // "$2a$" Blowfish algorithm. The following two digits are the cost parameter.
-  $salt = sprintf("$2a$%02d$", $cost) . $salt;
-
-  // Hash the password with the salt
-  $hash = crypt($password, $salt);
+  $hash = password_hash($password, PASSWORD_DEFAULT);
 	//////////////////////////////////////UPDATE SQL DATABASE//////////////////////////////////////////////
   $activation_hash = md5( rand(0,1000) );
 
