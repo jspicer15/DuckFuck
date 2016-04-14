@@ -12,6 +12,7 @@
         <div id="header">
             <h1 id="headertext">DuckFuck</h1>
             <input type="submit" id="signin" value="Sign In" onclick="location.href='www.duckfuck.cf/index.php';">
+	    <input type="submit" id="logout" value="Log Out" onclick="location.href='www.duckfuck.cf/logout.php';">
         </div>
 </html>
 
@@ -33,7 +34,7 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
     $password = $_POST['password'];
 
 ///////////////////////////////////////////CHECK PASSWORD HASH/////////////////////////////////////////
-    $hash = mysql_fetch_array(mysql_query("SELECT password FROM users WHERE email = '$username'"))[0];
+    $hash = mysql_fetch_array(mysql_query("SELECT password FROM users WHERE email = '$username' AND active = '1'"))[0];
 
     if(password_verify($password, $hash))
     {

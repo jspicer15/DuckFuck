@@ -11,6 +11,7 @@
         <div id="header">
             <h1 id="headertext">DuckFuck</h1>
             <input type="submit" id="signin" value="Sign In" onclick="location.href='www.duckfuck.cf/login';">
+	    <input type="submit" id="logout" value="Log Out" onclick="location.href='www.duckfuck.cf/logout.php';">
         </div>
 
         <h1>Create your DuckFuck Account </h1>
