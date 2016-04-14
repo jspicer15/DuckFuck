@@ -11,7 +11,7 @@
     <body>
         <div id="header">
             <h1 id="headertext">DuckFuck</h1>
-            <input type="submit" id="signin" value="Sign In" onclick="location.href='www.duckfuck.cf/login';">
+            <input type="submit" id="signin" value="Sign In" onclick="location.href='www.duckfuck.cf/index.php';">
         </div>
 </html>
 
@@ -33,23 +33,18 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
     $password = $_POST['password'];
 
 ///////////////////////////////////////////CHECK PASSWORD HASH/////////////////////////////////////////
-     
-    $checklogin = mysql_query("SELECT * FROM users WHERE email = '".$username."' AND password = '".crypt($password, $username->password)."'");
+    $hash = mysql_fetch_array(mysql_query("SELECT password FROM users WHERE email = '$username'"))[0];
 
-
-    if(mysql_num_rows($checklogin) == 1)
+    if(password_verify($password, $hash))
     {
-    // User is now logged in. Redirect etc.
-  
-        $row = mysql_fetch_array($checklogin);
-        $email = $row['email'];
-         
+    // User is now logged in. Redirect etc.  
         $_SESSION['email'] = $email;
         $_SESSION['LoggedIn'] = 1;
          
         echo "<h1>Success</h1>";
         echo "<p>We are now redirecting you to the member area.</p>";
-        echo "<meta http-equiv='refresh' content='=2;index.php' />";
+        header( 'Location: index.php' ) ; 
+	exit();
     }
     else
     {
