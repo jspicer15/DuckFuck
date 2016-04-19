@@ -16,12 +16,12 @@
 
 	<div id="form">
 		<form method="post" action="upload.php">
-			<p><label class="field" for="photo">Select photo to upload:</label><input type="file" name="photo" id="photo"></p>
-				    <p><label class="field" for="filename">Filename:</label><input type="text" name="filename" id="filename" readonly></p>
-				    <p><label class="field" for="gender">Gender (m/f):</label><input type="text" name="gender" id="gender"></p>
-				    <p><label class="field" for="major">Major:</label><input type="text" name="major" id="major"></p>
-				    <p><label class="field" for="preference">Preference (m/f):</label><input type="text" name="preference" id="preference"></p>
-				    <p><label class="field" for="bio">Short Bio:</label><input type="text" name="bio" id="bio"></p>
+			<label class="field" for="photo">Select photo to upload:</label><input type="file" name="photo" id="photo">
+				    <label class="field" for="filename">Filename:</label><input type="text" name="filename" id="filename" readonly>
+				    <label class="field" for="gender">Gender (m/f):</label><input type="text" name="gender" id="gender">
+				    <label class="field" for="major">Major:</label><input type="text" name="major" id="major">
+				    <label class="field" for="preference">Preference (m/f):</label><input type="text" name="preference" id="preference">
+				    <label class="field" for="bio">Short Bio:</label><input type="text" name="bio" id="bio">
                     <input type="submit" value="Update Profile" name="submit">
 
             <script type="text/javascript">
