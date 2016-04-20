@@ -11,8 +11,8 @@
     <body>
         <div id="header">
             <h1 id="headertext">DuckFuck</h1>
-            <input type="submit" id="signin" value="Sign In" onclick="location.href='www.duckfuck.cf/index.php';">
-	    <input type="submit" id="logout" value="Log Out" onclick="location.href='www.duckfuck.cf/logout.php';">
+            <input type="submit" id="signin" value="Sign In" onclick="location.href='index.php';">
+	    <input type="submit" id="logout" value="Log Out" onclick="location.href = 'logout.php';">
         </div>
 </html>
 
@@ -38,7 +38,7 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
     if(password_verify($password, $hash))
     {
     // User is now logged in. Redirect etc.  
-        $_SESSION['email'] = $email;
+        $_SESSION['email'] = $username;
         $_SESSION['LoggedIn'] = 1;
          
         echo "<h1>Success</h1>";

@@ -1,4 +1,4 @@
-<?php
+<?php include "base.php";
 
 
 //SQL CONNECTION
@@ -7,15 +7,23 @@ $username = "fceu_17834029";
 $password = "duckfuck";
 $dbname = "fceu_17834029_users";
  
-mysql_connect($servername, $username, $password) or die("MySQL Error: " . mysql_error());
-mysql_select_db($dbname) or die("MySQL Error: " . mysql_error());
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_errno > 0)
+{
+	echo "Error connecting to DB";
+	//die("Connection failed: " . $conn->connect_error;
 }
+
 //SQL CONNECTION
 
 /////////////////////////////////////////FILE UPLOADING///////////////////////////////////////////////
 
-
-$target_dir = "uploads/" . $_POST('email');
+//Make directory for user if it does not already exist
+if(!is_dir("uploads/". $_SESSION["email"] ."/")) {
+    mkdir("uploads/". $_SESSION["email"] ."/");
+}
+$target_dir = "uploads/" . $_SESSION['email'] . "/";
 $target_file = $target_dir . basename($_FILES["photo"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -80,18 +88,21 @@ else
 
 /////////////////////////////////////////FORM INFO SAVE///////////////////////////////////////////////
 
-	$filename = $_GET['filename'];
-	$gender = $_GET['gender'];
-	$major = $_GET['major'];
-	$bio = $_GET['bio'];
-	$preference = $_GET['preference'];
+	$filename = $_POST['filename'];
+	$gender = $_POST['gender'];
+	$major = $_POST['major'];
+	$bio = $_POST['bio'];
+	$preference = $_POST['preference'];
+	$email = $_SESSION['email'];
 
 	//UPDATE SQL DATABASE
-	$sql = "INSERT INTO users (filename, gender, major, bio, preference) VALUES ('$filename', '$gender', '$major', '$bio', '$preference')";
+	$sql = "UPDATE users SET filename = '$filename', gender = '$gender', major = '$major', bio = '$bio', preference = '$preference' WHERE email = '$email'";
 
-	if ($conn->qury($sql) === TRUE)
+	if ($conn->query($sql) === TRUE)
 	{
-		echo "Successfully updated profile!"
+       	 	$_SESSION['email'] = $email;
+        	$_SESSION['LoggedIn'] = 1;
+		echo "Successfully updated profile!";
 		sleep(2);
 		echo '<script type="text/javascript">
 		window.location = "http://duckfuck.cf/index.php"
