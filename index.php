@@ -1,4 +1,4 @@
-<?php include "base.php" ?>
+<?php include "base.php"; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,19 +12,21 @@
         <div id="header">
             <h1 id="headertext">DuckFuck</h1>
             <input type="submit" id="signin" value="Sign In" onclick="location.href='index.php';">
-	    <input type="submit" id="logout" value="Log Out" onclick="location.href = 'logout.php';">
+			<input type="submit" id="logout" value="Log Out" onclick="location.href = 'logout.php';">
         </div>
-</html>
+
 
 <?php
 if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
 {
+	 header( 'Refresh: 5; URL= home.php' ) ; 
+
      ?>
  
      <h1>Member Area</h1>
-     <p Thanks for logging in! You are <code><?=$_SESSION['email']?></code></p>
-
-      
+     <p>Thanks for logging in! You are <code><?=$_SESSION['email']?></code></p>
+     <p>Redirecting to the member area in 5 seconds></p>
+     </html>
      <?php
 }
 elseif(!empty($_POST['email']) && !empty($_POST['password']))
@@ -40,17 +42,18 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
     // User is now logged in. Redirect etc.  
         $_SESSION['email'] = $username;
         $_SESSION['LoggedIn'] = 1;
-         
+        header( 'Refresh: 5; URL= index.php' ) ; 
+ 
         echo "<h1>Success</h1>";
         echo "<p>We are now redirecting you to the member area.</p>";
-        header( 'Location: index.php' ) ; 
 	exit();
     }
     else
     {
         echo "<h1>Error</h1>";
-        echo "<p>Sorry, your account could not be found. Please <a href=\"index.php\">click here to try again</a>.</p>";
+        echo "<p>Sorry, your account could not be found. Please <a href=\"index.php\">click here to try again</a>.</p>    </html>";
     }
+
 }
 else
 {

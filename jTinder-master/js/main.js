@@ -4,13 +4,22 @@
 $("#tinderslide").jTinder({
 	// dislike callback
     onDislike: function (item) {
+		var url = 'matching.php';
 	    // set the status text
-        $('#status').html('Dislike image ' + (item.index()+1));
+        $('#status').html('Dislike image ' + (item.index()+1)); 
+        var query = 'user=' + item.attr('class') + '&like=' + 0;
+        window.location.href = url + query;
+               
     },
 	// like callback
     onLike: function (item) {
+		var url = 'matching.php?';
+
 	    // set the status text
         $('#status').html('Like image ' + (item.index()+1));
+        //console.log(item.attr('class'));
+        var query = 'user=' + item.attr('class') + '&like=' + 1;
+		window.location.href = url + query;
     },
 	animationRevertSpeed: 200,
 	animationSpeed: 400,

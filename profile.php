@@ -24,14 +24,25 @@
 		$major = $row[7];
 		$preference = $row[8];
 		$bio = $row[9];
+		
+	}
+
+	else 
+	{
+		header( 'Location: index.php' ) ; 
+	}
 ?>
  	 <div id="form">
 		<form method="post" action="upload.php" enctype="multipart/form-data">
 			<label class="field" for="photo">Select photo to upload:</label><input type="file" name="photo" id="photo">
 				    <label class="field" for="filename">Filename:</label><input type="text" name="filename" id="filename" readonly>
-				    <label class="field" for="gender">Gender (m/f):</label><input type="text" name="gender" id="gender" value="<?echo $gender;?>">
-				    <label class="field" for="major">Major:</label><input type="text" name="major" id="major" value="<?php echo $major;?>">
-				    <label class="field" for="preference">Preference (m/f):</label><input type="text" name="preference" id="preference" value="<?php echo $preference;?>">
+				    <label class="field" for="gender">Gender (m/f):</label><input type="radio" name="gender" id="gender" value="male" required> Male<br>
+				    <input type="radio" name="gender" id="gender" value="female">Female<br>
+				    <input type="radio" name="gender" id="gender" value="other">Other<br>
+					<label class="field" for="major">Major:</label><input type="text" name="major" id="major" value="<?php echo $major;?>">
+				    <label class="field" for="preference">Preference (m/f):</label><input type="radio" name="preference" id="preference" value="male" required> Male<br>
+				    <input type="radio" name="preference" id="preference" value="female"> Female<br>
+				    <input type="radio" name="preference" id="preference" value="both"> Both<br>
 				    <label class="field" for="bio">Short Bio:</label><input type="text" name="bio" id="bio" value="<?php echo $bio;?>">
 		    <input type="submit" value="Update Profile" name="submit">";
 
@@ -51,12 +62,3 @@
 
 	</body>
 	</html>
-<?php
-	}
-
-	else 
-	{
-		header( 'Location: index.php' ) ; 
-	}
-
-?>
