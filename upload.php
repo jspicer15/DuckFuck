@@ -88,7 +88,6 @@ else
 
 /////////////////////////////////////////FORM INFO SAVE///////////////////////////////////////////////
 
-	$filename = $_POST['filename'];
 	$gender = $_POST['gender'];
 	$major = $_POST['major'];
 	$bio = $_POST['bio'];
@@ -96,7 +95,7 @@ else
 	$email = $_SESSION['email'];
 
 	//UPDATE SQL DATABASE
-	$sql = "UPDATE users SET filename = '$filename', gender = '$gender', major = '$major', bio = '$bio', preference = '$preference' WHERE email = '$email'";
+	$sql = "UPDATE users SET gender = '$gender', major = '$major', bio = '$bio', preference = '$preference' WHERE email = '$email'";
 
 	if ($conn->query($sql) === TRUE)
 	{
