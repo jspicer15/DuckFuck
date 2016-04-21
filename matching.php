@@ -79,6 +79,14 @@ if ($conn->connect_errno > 0)
 			$likes .= ", ";
 			$likes .= $like;
 			$sql = "UPDATE users SET likes = '$likes' WHERE email = '$email'";
+			if ($conn->query($sql) === TRUE)
+			{
+				
+			}
+			else
+			{
+				echo "Error updating record: " . $conn->error;
+			}
 		}
 		
 		else
