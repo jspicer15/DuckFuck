@@ -39,46 +39,31 @@ if ($conn->connect_errno > 0)
         <div id="tinderslide">
             <ul>
 <?php
+    
 	if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
 	{
-		$users = mysql_query("SELECT * FROM users WHERE active = '1'");
-		 while($rowData = mysql_fetch_array($users)) {
-				$directory = "uploads/" . $rowData[2] . "/";
-				$photos = glob($directory . "*");
-				$main = $photos[0];
-				/*for($i = 0; $i < count($photos); $i++)
-				{
-					$image = $photos[$i];
-					
-					print $image ."<br />";
-					echo '<img src = "'.$image.'" alt = "User picture" />'."<br /><br />";
-				}*/
-			
-				echo'       <li class="'.$rowData[2].'" style = "background: url('.$main.'") ' /*no-repeat scroll center center; background-size: cover">*/ . '>
-							<div class="img"></div>
-							<div>'.$rowData[2].'</div>
-							<div class="like"></div>
-							<div class="dislike"></div>
-							</li> ';
-		}
-	}
-	else
-	{
-		header( 'Location: index.php' ) ; 
-	}
-	
-	if ((!empty($_GET['user']) && !empty($_GET['like'])))
-    {
 		$email = $_SESSION['email'];
-		$like = $_GET['like'];
-		$user = $_GET['user'];
-		
-		if ($like)
+
+		if (!empty($_GET['user']))
 		{
-			$likes = mysql_fetch_array(mysql_query("SELECT likes FROM users WHERE email = '$email'"))[0];
-			$likes .= ", ";
-			$likes .= $like;
-			$sql = "UPDATE users SET likes = '$likes' WHERE email = '$email'";
+			$like = $_GET['like'];
+			$user = $_GET['user'];
+			
+
+			if ($like == '1')
+			{
+				$likes = mysql_fetch_array(mysql_query("SELECT likes FROM users WHERE email = '$email'"))[0];
+				$likes .= ",";
+				$likes .= $user;
+				$sql = "UPDATE users SET likes = '$likes' WHERE email = '$email'";
+			}
+			else
+			{
+				$dislikes = mysql_fetch_array(mysql_query("SELECT dislikes FROM users WHERE email = '$email'"))[0];
+				$dislikes .= ",";
+				$dislikes .= $user;
+				$sql = "UPDATE users SET dislikes = '$dislikes' WHERE email = '$email'";
+			}
 			if ($conn->query($sql) === TRUE)
 			{
 				
@@ -87,16 +72,94 @@ if ($conn->connect_errno > 0)
 			{
 				echo "Error updating record: " . $conn->error;
 			}
-		}
-		
-		else
-		{
-			
-		}
-    }
 
+		}
+		$liked = mysql_fetch_array(mysql_query("SELECT likes FROM users WHERE email = '$email'"))[0];
+		$disliked = mysql_fetch_array(mysql_query("SELECT dislikes FROM users WHERE email = '$email'"))[0];
+		$seen = $liked . $disliked;
+		$profiles = explode(",", $seen);
+		$view = 1;
+		$i = 0;
+		/*if (empty($_GET['user']) && empty($_GET['like']))
+		{*/
+			$users = mysql_query("SELECT * FROM users WHERE active = '1'");
+			while($rowData = mysql_fetch_array($users)) {
+					$directory = "uploads/" . $rowData[2] . "/";
+					$photos = glob($directory . "*");
+					$main = $photos[0];
+					/*for($i = 0; $i < count($photos); $i++)
+					{
+						$image = $photos[$i];
+						
+						print $image ."<br />";
+						echo '<img src = "'.$image.'" alt = "User picture" />'."<br /><br />";
+					}*/
+
+				while ($i < count($profiles) + 1)
+				{
+					if ($profiles[$i] == $rowData[2])
+					{
+						$view = 0;
+					}
+					$i += 1;
+				}
+				
+				if (($view == 1) && ($email != $rowData[2]))
+				{
+						echo'       <li class="'.$rowData[2].'" style = "background: url('.$main.'") ' /*no-repeat scroll center center; background-size: cover">*/ . '>
+								<div class="img"></div>
+								<div>'.$rowData[2].'</div>
+								<div class="like"></div>
+								<div class="dislike"></div>
+								</li> ';
+				}
+				$i = 0;
+				$view = 1;
+			}
+		//}
+		/*else
+		{
+			$users = mysql_query("SELECT * FROM users WHERE active = '1'");
+			while($rowData = mysql_fetch_array($users)) {
+					$directory = "uploads/" . $rowData[2] . "/";
+					$photos = glob($directory . "*");
+					$main = $photos[0];
+					/*for($i = 0; $i < count($photos); $i++)
+					{
+						$image = $photos[$i];
+						
+						print $image ."<br />";
+						echo '<img src = "'.$image.'" alt = "User picture" />'."<br /><br />";
+					}
+				
+				while ($i < count($profiles))
+				{
+					if (profiles[$i] == $rowData[2])
+					{
+						view = 0;
+					}
+					$i += 1;
+				}
+				
+				if ($view)
+				{
+					echo'       <li class="'.$rowData[2].'" style = "background: url('.$main.'") ' /*no-repeat scroll center center; background-size: cover"> . '>
+							<div class="img"></div>
+							<div>'.$rowData[2].'</div>
+							<div class="like"></div>
+							<div class="dislike"></div>
+							</li> ';
+				}
+			}
+		}*/
+	}
+	else
+	{
+		header( 'Location: index.php' ) ; 
+	}
 ?>
-            </ul>
+
+        </ul>
         </div>
         <!-- end jtinder container -->
     </div>

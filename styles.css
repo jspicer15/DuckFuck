@@ -1,55 +1,65 @@
-* {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	border: 0px 0px 0px 0px;
-}
-
 body {
 	font-family: 'Open Sans', arial;
-	font-size: 12px;
+    font-size: .8em;
 	color: black;
 	background-color: white;
 }
 
-div#header {
-	position: relative;
-	background-color: lightgray;
-	width: auto;
-	height: 75px;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-h1#headertext {
-	position: absolute;
-	color: #840017;
-	left: 30px;
-	top: 3px;
-	letter-spacing: 2px;
+li {
+    float: left;
+    margin-top:4%;
+    margin-left:1%;
 }
 
-input#signin {
-    background-color: #840017;
-    position: absolute;
-    border-radius: 5px;
-    border: 3px solid black;
+li a {
+    display: block;
     color: white;
-    width: auto;
-    padding: 10px 32px;
-    margin: 4px 2px;
-    top: 10px;
-    left: 1700px;
-    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
-h1 {
-	position: relative;
+header {
+	background-color: lightgray;
+}
+
+#heading {
+margin-top:1.3%;
+margin-left: 0;
+}
+
+#headertext {
+	position: absolute;
+    color: #840017;
+    margin-left: 3%;
+    margin-top: 1%;
+    letter-spacing: .05em;
+    position: relative;
 	text-align: center;
 	font-weight: 300;
 	width: auto;
-	top: 80px;
-	padding: 10px 0px 10px 0px;
-	font-size: 40px;
-	color: gray;
+    margin-top: .5%;
+    font-size: 4em;
 }
+/*
+input#signin {
+    background-color: #840017;
+    position: absolute;
+    border-radius: 1em;
+    border: .25em solid black;
+    color: white;
+    width: auto;
+    padding: .75% 2.75%;
+    margin-top: 2.5%;
+    margin-left: 90%;
+    cursor: pointer;
+}*/
 
 div#about {
 	position: relative;
@@ -75,16 +85,20 @@ p {
 
 div#form {
 	position: absolute;
-	height: 600px;
-	width: 500px;
-	left: 1000px;
-	top: 310px;
+    height: 100%;
+    width: 35%;
+    margin-left: 70%;
+    margin-top: 10%;
 }
 
 input {
-	position: absolute;
+    width: 60%;
+    height: 2em;
+    margin-top: 5%;
+    border: .3em solid #840017;
+    border-radius: .75em;
 }
-
+/*
 input#FirstName {
 	top: 5px;
 }
@@ -94,12 +108,12 @@ input#LastName {
 }
 
 input#email {
-	top: 145px;
-	width: 350px;
+    margin-top: 25%;	
+    width: 60%;
 }
 
 input#password {
-	top: 215px;
+    margin-top: 35%;
 }
 
 input#ConfirmPassword {
@@ -112,9 +126,9 @@ input#submit {
 
 input[type=text] {
 	width: 200px;
-	padding: 10px;
-	border: 3px solid #840017;
-    border-radius: 10px;
+    padding: 2.5%;
+    border: .25em solid #840017;
+    border-radius: .75em;
     outline: none;
 }
 
@@ -134,13 +148,22 @@ input[type=password] {
 input[type=password]:focus {
 	box-shadow: 0 0 10px #840017;
 }
-
+*/
 input[type=submit] {
     background-color: #840017;
-    border-radius: 5px;
-    border: 3px solid black;
+    border-radius: .75em;
+    border: .25em solid black;
     color: white;
-    padding: 10px 32px;
-    margin: 4px 2px;
+    width: 20%;
     cursor: pointer;
+}
+
+#memberLogin {
+    margin-left: 74%;
+    margin-top:5%;
+}
+
+#signupForm {
+    color: black;
+    font-size: 1.5em;
 }

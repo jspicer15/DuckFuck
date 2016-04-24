@@ -1,19 +1,24 @@
 <?php include "base.php" ?>
-	<!DOCTYPE html>
-	<html>
-	    <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" href="styles.css"></link>
-		<link rel="icon" type="image/png" href="favicon.jpg">
-		<title>DuckFuck</title>
-	    </head>
-	   
-	    <body>
-		<div id="header">
-		    <h1 id="headertext">DuckFuck</h1>
-            		<input type="submit" id="signin" value="Sign In" onclick="location.href='index.php';">
-	    		<input type="submit" id="logout" value="Log Out" onclick="location.href = 'logout.php';">
-		</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles.css"></link>
+        <link rel="icon" type="image/png" href="favicon.jpg">
+        <title>DuckFuck</title>
+    </head>
+   
+    <body>
+        <header>
+            
+            <nav>
+                <ul>
+                    <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
+                    <li><a href="index.php">Sign In</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
 
 <?php
 	if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))

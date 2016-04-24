@@ -4,7 +4,7 @@
 $("#tinderslide").jTinder({
 	// dislike callback
     onDislike: function (item) {
-		var url = 'matching.php';
+		var url = '?';
 	    // set the status text
         $('#status').html('Dislike image ' + (item.index()+1)); 
         var query = 'user=' + item.attr('class') + '&like=' + 0;
@@ -13,7 +13,7 @@ $("#tinderslide").jTinder({
     },
 	// like callback
     onLike: function (item) {
-		var url = 'matching.php?';
+		var url = '?';
 
 	    // set the status text
         $('#status').html('Like image ' + (item.index()+1));

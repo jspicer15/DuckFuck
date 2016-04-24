@@ -9,11 +9,16 @@
     </head>
    
     <body>
-        <div id="header">
-            <h1 id="headertext">DuckFuck</h1>
-            <input type="submit" id="signin" value="Sign In" onclick="location.href='index.php';">
-			<input type="submit" id="logout" value="Log Out" onclick="location.href = 'logout.php';">
-        </div>
+        <header>
+            
+            <nav>
+                <ul>
+                    <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
+                    <li><a href="index.php">Sign In</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
 
 
 <?php
@@ -58,10 +63,8 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
 else
 {
     ?>
-
-	<a href = "signup_form.php" > <h3> Don't have an account? Sign up here </h3> </a>
     </body>
-   <h1>Member Login</h1>
+   <h1 id="memberLogin">Member Login</h1>
 
 	<div id="form">
 		<h2> Have an account? Log in here</h2>
@@ -71,6 +74,7 @@ else
 		        <input type="password" name ="password" id="password" minlength="8" placeholder="Password" required><br/>		       
 		        <input type="submit" id="submit" value="Submit">
         	</form>
+        	<a href = "signup_form.php" id="signupForm"> Don't have an account? Sign up here </a>
         </div>
    <?php
 }
