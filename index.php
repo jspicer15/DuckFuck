@@ -60,6 +60,7 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
     // User is now logged in. Redirect etc.  
         $_SESSION['email'] = $username;
         $_SESSION['LoggedIn'] = 1;
+		header( 'Refresh: 1; URL= index.php' ) ; 
 
     }
     else

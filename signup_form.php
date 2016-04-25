@@ -56,7 +56,7 @@
 
 		<h1 id="createAccount">Create your DuckFuck Account </h1>
     	<div id="about">
-            <img id="ducklogo" onmouseover="playAudio()" onmouseout="stopAudio()" src="ducklogo.png" alt="ducklogo" />
+            <img id="ducklogo" src=" DF-logo.png" alt="logo" />
             <p id="aboutText">A dating website <i>for</i> Stevens students, <i>by</i> Stevens students. Creating an account is <strong>free</strong>, no strings attached.</p>
         </div>
         

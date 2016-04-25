@@ -98,13 +98,21 @@ if ($conn->connect_errno > 0)
 		}
 		$liked = mysql_fetch_array(mysql_query("SELECT likes FROM users WHERE email = '$email'"))[0];
 		$disliked = mysql_fetch_array(mysql_query("SELECT dislikes FROM users WHERE email = '$email'"))[0];
+		$pref = mysql_fetch_array(mysql_query("SELECT preference FROM users WHERE email = '$email'"))[0];
 		$seen = $liked . $disliked;
 		$profiles = explode(",", $seen);
 		$view = 1;
 		$i = 0;
 		/*if (empty($_GET['user']) && empty($_GET['like']))
 		{*/
-			$users = mysql_query("SELECT * FROM users WHERE active = '1'");
+			if ($pref != "both")
+			{
+				$users = mysql_query("SELECT * FROM users WHERE active = '1' AND gender ='$pref'");
+			}
+			else
+			{
+				$users = mysql_query("SELECT * FROM users WHERE active = '1'");
+			}
 			while($rowData = mysql_fetch_array($users)) {
 					$directory = "uploads/" . $rowData[2] . "/";
 					$photos = glob($directory . "*");
@@ -128,12 +136,17 @@ if ($conn->connect_errno > 0)
 				
 				if (($view == 1) && ($email != $rowData[2]))
 				{
-						echo'       <li class="'.$rowData[2].'" style = "background: url('.$main.') no-repeat scroll center center; background-size: 100%">
+						echo'   <li class="" style = "background: url() no-repeat scroll center center; background-size: 100%; background-color: white">
+								</li>
+								
+								<li class="'.$rowData[2].'" style = "background: url('.$main.') no-repeat scroll center center; background-size: 100%">
 								<div class="img"></div>
-								<div>'.$rowData[2].'</div>
+								<div class="username">'.$rowData[0].' '.$rowData[1].'</div>
 								<div class="like"></div>
 								<div class="dislike"></div>
-								</li> ';
+								</li>  
+								
+								<div class="username">'.$rowData[0].' '.$rowData[1].'</div>';
 				}
 				$i = 0;
 				$view = 1;

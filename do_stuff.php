@@ -9,6 +9,9 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
 	{
 		header( 'Location: index.php' ) ; 
 	}
+	
+	header('Refresh: 15; url=do_stuff.php?user='.$user);
+
 ?>
 <!DOCTYPE html>
 <html>
