@@ -27,6 +27,9 @@ body {
     position: relative;
     display: block;
     height: 100%;
+    width: 30%;
+    margin-left: 39%;
+
 }
 
 #tinderslide li {
@@ -115,7 +118,7 @@ body {
 
 /* Image container */
 #tinderslide .img {
-    height: 90%;
+    height: 70%;
     width: 100%;
     margin-bottom: 5px;
     position: relative;

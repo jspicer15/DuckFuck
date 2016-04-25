@@ -19,16 +19,31 @@
             <nav>
                 <ul>
                     <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
-                    <li><a href="index.php">Sign In</a></li>
-                    <li><a href="logout.php">Log Out</a></li>
+                    <?php
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
+						{
+							?>
+							<li><a href="profile.php">Edit Profile</a></li>
+							<li><a href="matching.php">Find Matches</a></li>
+							<li><a href="view_matches.php">View Your Matches</a></li>
+							<li><a href="view_matches.php">Chat</a></li>
+							<li><a href="logout.php">Log Out</a></li>
+							<?php
+						}
+							?>
                 </ul>
             </nav>
         </header>
-				
+
 
 		<?php
-		header('Refresh: 5; URL=matching.php');
-		echo '<p Redirecting to Matches in 10 seconds> </p></p> </html>';
 	}
 	
 	else

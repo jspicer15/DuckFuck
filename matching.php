@@ -27,12 +27,34 @@ if ($conn->connect_errno > 0)
     </head>
    
     <body>
-        <div id="header">
-            <h1 id="headertext">DuckFuck</h1>
-            <input type="submit" id="signin" value="Sign In" onclick="location.href='index.php';">
-			<input type="submit" id="logout" value="Log Out" onclick="location.href = 'logout.php';">
-        </div>
-<body>
+        <header>
+            
+            <nav>
+                <ul>
+                    <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
+                    <?php
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
+						{
+							?>
+							<li><a href="profile.php">Edit Profile</a></li>
+							<li><a href="matching.php">Find Matches</a></li>
+							<li><a href="view_matches.php">View Your Matches</a></li>
+							<li><a href="view_matches.php">Chat</a></li>
+							<li><a href="logout.php">Log Out</a></li>
+							<?php
+						}
+							?>
+                </ul>
+            </nav>
+        </header>
+
     <!-- start padding container -->
     <div class="wrap">
         <!-- start jtinder container -->
@@ -106,7 +128,7 @@ if ($conn->connect_errno > 0)
 				
 				if (($view == 1) && ($email != $rowData[2]))
 				{
-						echo'       <li class="'.$rowData[2].'" style = "background: url('.$main.'") ' /*no-repeat scroll center center; background-size: cover">*/ . '>
+						echo'       <li class="'.$rowData[2].'" style = "background: url('.$main.') no-repeat scroll center center; background-size: 100%">
 								<div class="img"></div>
 								<div>'.$rowData[2].'</div>
 								<div class="like"></div>

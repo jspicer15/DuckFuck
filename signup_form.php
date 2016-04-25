@@ -13,11 +13,30 @@
             <nav>
                 <ul>
                     <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
-                    <li><a href="index.php">Sign In</a></li>
-                    <li><a href="logout.php">Log Out</a></li>
+                    <?php
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
+						{
+							?>
+							<li><a href="profile.php">Edit Profile</a></li>
+							<li><a href="matching.php">Find Matches</a></li>
+							<li><a href="view_matches.php">View Your Matches</a></li>
+							<li><a href="view_matches.php">Chat</a></li>
+							<li><a href="logout.php">Log Out</a></li>
+							<?php
+						}
+							?>
                 </ul>
             </nav>
         </header>
+
+
 
         <script>
             var password = document.getElementById("password")
@@ -35,6 +54,12 @@
             confirm_password.onkeyup = validatePassword;
         </script>
 
+		<h1 id="createAccount">Create your DuckFuck Account </h1>
+    	<div id="about">
+            <img id="ducklogo" onmouseover="playAudio()" onmouseout="stopAudio()" src="ducklogo.png" alt="ducklogo" />
+            <p id="aboutText">A dating website <i>for</i> Stevens students, <i>by</i> Stevens students. Creating an account is <strong>free</strong>, no strings attached.</p>
+        </div>
+        
         <div id="form">
     		<form action="signup.php" method="post">
                 <input type="text" id="FirstName" name="FirstName" autocomplete="off" maxlength="15" placeholder="First Name" required><br/>

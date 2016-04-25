@@ -14,8 +14,25 @@
             <nav>
                 <ul>
                     <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
-                    <li><a href="index.php">Sign In</a></li>
-                    <li><a href="logout.php">Log Out</a></li>
+                    <?php
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
+						{
+							?>
+							<li><a href="profile.php">Edit Profile</a></li>
+							<li><a href="matching.php">Find Matches</a></li>
+							<li><a href="view_matches.php">View Your Matches</a></li>
+							<li><a href="view_matches.php">Chat</a></li>
+							<li><a href="logout.php">Log Out</a></li>
+							<?php
+						}
+							?>
                 </ul>
             </nav>
         </header>
@@ -24,13 +41,9 @@
 <?php
 if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
 {
-	 header( 'Refresh: 5; URL= home.php' ) ; 
-
      ?>
  
      <h1>Member Area</h1>
-     <p>Thanks for logging in! You are <code><?=$_SESSION['email']?></code></p>
-     <p>Redirecting to the member area in 5 seconds></p>
      </html>
      <?php
 }
@@ -47,11 +60,7 @@ elseif(!empty($_POST['email']) && !empty($_POST['password']))
     // User is now logged in. Redirect etc.  
         $_SESSION['email'] = $username;
         $_SESSION['LoggedIn'] = 1;
-        header( 'Refresh: 5; URL= index.php' ) ; 
- 
-        echo "<h1>Success</h1>";
-        echo "<p>We are now redirecting you to the member area.</p>";
-	exit();
+
     }
     else
     {

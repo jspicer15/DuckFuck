@@ -1,6 +1,15 @@
 <?php include "base.php"; 
 if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
-{ ?>
+{ 
+	if (!empty($_GET['user']))
+	{
+		$user = $_GET['user'];
+	}
+	else
+	{
+		header( 'Location: index.php' ) ; 
+	}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,17 +25,41 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
             <nav>
                 <ul>
                     <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
-                    <li><a href="index.php">Sign In</a></li>
-                    <li><a href="logout.php">Log Out</a></li>
+                    <?php
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
+						{
+							?>
+							<li><a href="profile.php">Edit Profile</a></li>
+							<li><a href="matching.php">Find Matches</a></li>
+							<li><a href="view_matches.php">View Your Matches</a></li>
+							<li><a href="view_matches.php">Chat</a></li>
+							<li><a href="logout.php">Log Out</a></li>
+							<?php
+						}
+							?>
                 </ul>
             </nav>
         </header>
+
+
 	<div id="chatbox">
+			<script type="text/javascript">var username = <?php echo json_encode($user); ?>;</script>
 			<?php
-				if(file_exists('logs/'. $_SESSION['email'] .'/log.html') && filesize('logs/'. $_SESSION['email'] .'/log.html') > 0)
+			$direct = 'logs/'. $_SESSION['email'] .$user.'/log.html';
+				if(file_exists('logs/'. $_SESSION['email'] .$user.'/log.html') && filesize('logs/'. $_SESSION['email'] .$user.'/log.html') > 0)
 				{
-					$handle = fopen('logs/'. $_SESSION['email'] .'/log.html', 'r');
-					$contents = fread($handle, filesize('logs/'. $_SESSION['email'] .'/log.html'));
+					?>
+					<script type="text/javascript">var direct = <?php echo json_encode($direct); ?>;</script>
+					<?php
+					$handle = fopen('logs/'. $_SESSION['email'] .$user.'/log.html', 'r');
+					$contents = fread($handle, filesize('logs/'. $_SESSION['email'] .$user.'/log.html'));
 					fclose($handle);
 					 
 					echo $contents;
@@ -39,21 +72,21 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
 			<input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
 		</form>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
-<!--<script type="text/javascript">
+<script type="text/javascript">
 	$("#submitmsg").click(function(){	
 		var clientmsg = $("#usermsg").val();
-		$.post("update_stuff.php", {text: clientmsg});				
+		var sendHere = "update_stuff.php?user=";
+		sendHere = sendHere.concat(username);
+		console.log(sendHere);
+		$.post(sendHere, {text: clientmsg});				
 		$("#usermsg").attr("value", "");
+		location.reload();
 		return false;
 	});
 	//Load the file containing the chat log
 	function loadLog(){		
 		var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request
 		$.ajax({
-			<?php echo 'var user_email = '.json_encode($_SESSION['email']).';'; ?>
-			var direct = "logs/";
-			direct = direct.concat(user_email);
-			direct = direct.concat("/log.html");
 			url: direct,
 			cache: false,
 			success: function(html){		
@@ -67,7 +100,7 @@ if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
 		  	},
 		});
 	}
-</script>-->
+</script>
 	</body>
 	</html>
 

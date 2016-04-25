@@ -14,11 +14,30 @@
             <nav>
                 <ul>
                     <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
-                    <li><a href="index.php">Sign In</a></li>
-                    <li><a href="logout.php">Log Out</a></li>
+                    <?php
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
+						{
+							?>
+							<li><a href="profile.php">Edit Profile</a></li>
+							<li><a href="matching.php">Find Matches</a></li>
+							<li><a href="view_matches.php">View Your Matches</a></li>
+							<li><a href="view_matches.php">Chat</a></li>
+							<li><a href="logout.php">Log Out</a></li>
+							<?php
+						}
+							?>
                 </ul>
             </nav>
         </header>
+
+
 
 <?php
 	if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['email']))
@@ -40,7 +59,6 @@
  	 <div id="form">
 		<form method="post" action="upload.php" enctype="multipart/form-data">
 			<label class="field" for="photo">Select photo to upload:</label><input type="file" name="photo" id="photo">
-				    <label class="field" for="filename">Filename:</label><input type="text" name="filename" id="filename" readonly>
 				    <label class="field" for="gender">Gender (m/f):</label><input type="radio" name="gender" id="gender" value="male" required> Male<br>
 				    <input type="radio" name="gender" id="gender" value="female">Female<br>
 				    <input type="radio" name="gender" id="gender" value="other">Other<br>
@@ -49,7 +67,7 @@
 				    <input type="radio" name="preference" id="preference" value="female"> Female<br>
 				    <input type="radio" name="preference" id="preference" value="both"> Both<br>
 				    <label class="field" for="bio">Short Bio:</label><input type="text" name="bio" id="bio" value="<?php echo $bio;?>">
-		    <input type="submit" value="Update Profile" name="submit">";
+		    <input type="submit" value="Update Profile" name="submit">
 
 	    <script type="text/javascript">
 	    document.getElementById('photo').onchange = uploadOnChange;
