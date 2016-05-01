@@ -13,26 +13,22 @@
             
             <nav>
                 <ul>
-                    <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
+                    <li><a href="index.php"><img src="logo/df-logo.svg" alt="DuckFuck" id="headerlogo"></a></li>
                     <?php
-						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
-						{
-							 ?>
-							<li><a href="signup_form.php">Create an Account</a></li>
-							<li><a href="index.php">Sign In</a></li>
+						if (empty($_SESSION['LoggedIn']) && empty($_SESSION['email'])) {
+                            ?>
+                                <li id="navtitle">Welcome to DuckFuck</li>
+                            <?php
+						} else {
+							?>
+    							<li><a href="profile.php">Edit Profile</a></li>
+    							<li><a href="matching.php">Find Matches</a></li>
+    							<li><a href="view_matches.php">View Your Matches</a></li>
+    							<li><a href="view_matches.php">Chat</a></li>
+    							<li><a href="logout.php">Log Out</a></li>
 							<?php
 						}
-						else
-						{
-							?>
-							<li><a href="profile.php">Edit Profile</a></li>
-							<li><a href="matching.php">Find Matches</a></li>
-							<li><a href="view_matches.php">View Your Matches</a></li>
-							<li><a href="view_matches.php">Chat</a></li>
-							<li><a href="logout.php">Log Out</a></li>
-							<?php
-						}
-							?>
+					?>
                 </ul>
             </nav>
         </header>
@@ -74,7 +70,7 @@ else
 {
     ?>
     </body>
-   <h1 id="memberLogin">Member Login</h1>
+   <h1 id="memberLogin">The only dating site for Stevens students, by Stevens students.</h1>
 
 	<div id="form">
 		<h2> Have an account? Log in here</h2>
