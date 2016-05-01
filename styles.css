@@ -63,6 +63,12 @@ li a {
     }
 }
 
+.signedup {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 14pt;
+    text-align: center;
+}
 
 /*
 input#signin {
@@ -78,15 +84,12 @@ input#signin {
     cursor: pointer;
 }*/
 
+/*
 div#about {
 	margin-top: 5%;
     margin-left: 41%;
     width: 20%;
     height: 30em;
-}
-
-#ducklogo {
-	height: 15em;
 }
 
 p {
@@ -113,7 +116,7 @@ input:not(#photo) {
     border-radius: .75em;
     display: inherit;
 }
-/*
+
 input#FirstName {
 	top: 5px;
 }
