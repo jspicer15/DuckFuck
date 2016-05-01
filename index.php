@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles.css"></link>
-        <link rel="icon" type="image/png" href="favicon.jpg">
+        <link rel="icon" type="image/png" href="favicon.png">
         <title>DuckFuck</title>
     </head>
    
