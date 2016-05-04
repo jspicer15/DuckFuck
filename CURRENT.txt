@@ -2,4 +2,18 @@ I have the site hosted at duckfuck.cf
 The signup form works to save the data in an SQL database but the email does
 not send properly yet, working on that. 
 John 4/10/16 
-Sessions are almost working. 
+Sessions are almost working.
+
+Things that need to be updated:
+	CSS across the site.
+	Adding user's name, bio, and other pictures to the swiping page.
+	Replacing user's email with their name in the chat and match pages.
+
+SQL schema:
+"users" table, contains 6 columns. Column name/description followed by its type.
+- first name "first" VARCHAR(255)
+- last name "last" VARCHAR(255)
+- "email" VARCHAR(255)
+- password hash & salt "password" VARCHAR(255)
+- activation code, or the character 'A' if the account is activated "activation" VARCHAR(255)
+- timestamp of when the account was made "timestamp" TIMESTAMP
