@@ -9,15 +9,19 @@
    
     <body>
         <header>
+            
             <nav>
                 <ul>
                     <li id="heading"><a href="index.php" id="headertext">DuckFuck</a></li>
                     <?php
-						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email'])) {
-							?>
-                                <li id="navtitle">Welcome to DuckFuck</li>
-                            <?php
-						} else
+						if(empty($_SESSION['LoggedIn']) && empty($_SESSION['email']))
+						{
+							 ?>
+							<li><a href="signup_form.php">Create an Account</a></li>
+							<li><a href="index.php">Sign In</a></li>
+							<?php
+						}
+						else
 						{
 							?>
 							<li><a href="profile.php">Edit Profile</a></li>
@@ -27,7 +31,7 @@
 							<li><a href="logout.php">Log Out</a></li>
 							<?php
 						}
-					?>
+							?>
                 </ul>
             </nav>
         </header>
@@ -35,8 +39,8 @@
 
 
         <script>
-            var password = document.getElementById("password");
-            var confirm_password = document.getElementById("ConfirmPassword");
+            var password = document.getElementById("password")
+            , confirm_password = document.getElementById("ConfirmPassword");
 
             function validatePassword(){
             if(password.value != confirm_password.value) {
@@ -57,7 +61,7 @@
         </div>
         
         <div id="form">
-    		<form action="signup.php" method="POST">
+    		<form action="signup.php" method="post">
                 <input type="text" id="FirstName" name="FirstName" autocomplete="off" maxlength="15" placeholder="First Name" required><br/>
                 <input type="text" id="LastName" name="LastName" autocomplete="off" maxlength="25" placeholder="Last Name" required><br/>
                 

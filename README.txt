@@ -1,8 +1,8 @@
-CS 347-B
-Team: LittleSchemers
-Project: DuckFuck; a dating website for Stevens students, by Stevens students
-Members: John Spicer, Mark Spaloss, Jeff Meli, Ankur Ramesh
+Website hosted at www.duckfuck.cf : Site is live.
+Users can signup, log in, edit their profile, add pictures, swipe through all current users, view all users that they matched with, and chat with any user that they matched with.
+Things that need to be updated:
+	CSS across the site.
+	Adding user's name, bio, and other pictures to the swiping page.
+	Replacing user's email with their name in the chat and match pages.
 
-
-Website URL: duckfuck.cf
-Features: Users can signup, log in, edit their profile, add profile pictures, swipe through all current users, view all users that they matched with, and chat with any user that they matched with.
+Included are photos of the SQL Database, chat log folders, and user picture folders. These are included to show how the user is stored.
