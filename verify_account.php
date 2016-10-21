@@ -1,8 +1,8 @@
 <?php
-  $servername = "sql201.freecluster.eu";
-  $username = "fceu_17834029";
-  $password = "duckfuck";
-  $dbname = "fceu_17834029_users";
+  $servername = "####";
+  $username = "####";
+  $password = "####";
+  $dbname = "####";
   $conn = new mysqli($servername, $username, $password, $dbname);
 
 	if ($conn->connect_errno > 0)
